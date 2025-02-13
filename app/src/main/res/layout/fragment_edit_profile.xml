@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="@string/change_picture"
             android:textColor="#666666"
-            android:background="@drawable/gray_button"
+            android:background="@drawable/green_button"
             app:layout_constraintTop_toBottomOf="@id/ivProfile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
