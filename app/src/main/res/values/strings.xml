@@ -7,4 +7,8 @@
     <string name="username">Username</string>
     <string name="default_username">Yoni</string>
     <string name="log_out">Log Out</string>
+    <string name="settings_button_description">Settings</string>
+    <string name="post_button">Post</string>
+
+
 </resources>

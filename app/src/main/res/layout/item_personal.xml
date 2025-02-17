@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/userProfile_personal_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp">
@@ -21,7 +22,7 @@
                 android:id="@+id/userProfile_personal_image"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/user"/>
+                android:src="@drawable/user" />
 
             <TextView
                 android:id="@+id/textView_username_itemPersonal"
@@ -29,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
         <ImageView
@@ -46,14 +47,14 @@
 
             <ImageButton
                 android:id="@+id/buttonLike_itemPersonal"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:src="@drawable/like" />
 
             <ImageButton
                 android:id="@+id/buttonDislike_itemPersonal"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:layout_marginStart="12dp"
                 android:src="@drawable/dislike" />
 
@@ -67,6 +68,14 @@
                 android:paddingVertical="4dp"
                 android:textColor="@android:color/white"
                 android:textSize="12sp" />
+            <ImageButton
+                android:id="@+id/button_setting_post_personal"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/settings" />
+
         </LinearLayout>
 
         <TextView
