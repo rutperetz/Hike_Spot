@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/userProfile_personal_image"
+            android:id="@+id/userProfile_personal_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp">

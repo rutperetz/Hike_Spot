@@ -7,6 +7,7 @@ plugins {
     id("androidx.navigation.safeargs") apply true
 }
 
+
 android {
     namespace = "com.example.hike_spot"
     compileSdk = 35
@@ -37,6 +38,7 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {this.viewBinding = true}
 }
 
 dependencies {
