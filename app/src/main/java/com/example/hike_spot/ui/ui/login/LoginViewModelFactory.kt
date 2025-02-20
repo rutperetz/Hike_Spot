@@ -1,4 +1,4 @@
-package com.example.hike_spot.ui.unAuthScreens.login
+package com.example.hike_spot.ui.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

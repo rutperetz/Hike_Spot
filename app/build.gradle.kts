@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -60,6 +61,6 @@ dependencies {
     //navigation implementation:
     implementation("androidx.navigation:navigation-fragment:2.8.7")
     implementation("androidx.navigation:navigation-ui:2.8.7")
-
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
 }

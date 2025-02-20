@@ -1,9 +1,8 @@
-package com.example.hike_spot.ui.unAuthScreens.login
-
+package com.example.hike_spot.ui.ui.login
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.hike_spot.models.AuthState
 import com.example.hike_spot.repository.AuthRepository
 import kotlinx.coroutines.launch

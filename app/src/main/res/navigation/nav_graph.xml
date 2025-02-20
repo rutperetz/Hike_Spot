@@ -11,22 +11,38 @@
         android:label="login" >
         <action
             android:id="@+id/action_login_to_sign_up"
-            app:destination="@id/sign_up" />
+            app:destination="@id/sign_up"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_login_to_feed"
-            app:destination="@id/feed" />
+            app:destination="@id/feed"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/sign_up"
-        android:name="com.example.hike_spot.ui.sign_up.signUp"
+        android:name="com.example.hike_spot.ui.sign_up.SignUp"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_sign_up_to_login"
-            app:destination="@id/login" />
+            app:destination="@id/login"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/sign_up"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_sign_up_to_feed"
-            app:destination="@id/feed" />
+            app:destination="@id/feed"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/feed"
