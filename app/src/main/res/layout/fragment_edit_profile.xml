@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_edit_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -10,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4">
 
         <!-- Edit Profile Title - now centered -->
@@ -23,8 +24,8 @@
             android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="italic"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -35,13 +36,11 @@
             android:layout_height="120dp"
             android:layout_marginTop="24dp"
             android:src="@drawable/user"
-            app:layout_constraintTop_toBottomOf="@id/edit_profile_textview"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:civ_border_color="#3F51B5"
             app:civ_border_width="2dp"
-            app:civ_border_color="#3F51B5" />
-
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_profile_textview" />
 
 
         <!-- Change Picture Button -->
@@ -49,50 +48,50 @@
             android:id="@+id/change_profile_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/green_button"
             android:text="@string/change_picture"
             android:textColor="#666666"
-            android:background="@drawable/green_button"
-            app:layout_constraintTop_toBottomOf="@id/profile_image"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_image" />
 
         <!-- Username Label -->
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:text="@string/username"
             android:textColor="#666666"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/change_profile_button"
-            android:layout_marginTop="24dp" />
+            app:layout_constraintTop_toBottomOf="@id/change_profile_button" />
 
         <!-- Username EditText -->
         <EditText
             android:id="@+id/edit_profile_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:background="@drawable/edit_text_background"
             android:padding="12dp"
             android:text="edit username"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/username"
-            android:layout_marginTop="8dp" />
+            app:layout_constraintTop_toBottomOf="@id/username" />
 
         <!-- Log Out Button -->
         <Button
             android:id="@+id/button_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/red"
             android:text="@string/log_out"
             android:textColor="@color/white"
-            android:backgroundTint="@color/red"
-            app:layout_constraintTop_toBottomOf="@id/edit_profile_username"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_profile_username" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

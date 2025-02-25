@@ -1,59 +1,125 @@
-package com.example.hike_spot
+package com.example.hike_spot.ui.profile
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.hike_spot.R
+import com.example.hike_spot.databinding.FragmentEditProfileBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class EditProfileFragment : Fragment() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [edit_profile.newInstance] factory method to
- * create an instance of this fragment.
- */
-class edit_profile : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentEditProfileBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private lateinit var viewModel: ProfileViewModel
+
+    private var selectedImageUri: Uri? = null
+    private var currentUsername: String = ""
+
+    // לאנצ'ר לבחירת תמונה מהגלריה
+    private val getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            result.data?.data?.let { uri ->
+                selectedImageUri = uri
+                binding.profileImage.setImageURI(uri)
+            }
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_profile, container, false)
+    ): View {
+        _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment edit_profile.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            edit_profile().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
+
+        // טעינת מידע של המשתמש הנוכחי (ינוטרל בינתיים)
+        loadUserData()
+
+        // הגדרת מאזינים לכפתורים
+        setupListeners()
+    }
+
+    private fun loadUserData() {
+        // כרגע רק מגדירים ערכים ראשוניים לצורך הדוגמה
+        // בהמשך נחליף את זה בקריאות ל-Firebase
+        currentUsername = "DefaultUser"
+        binding.editProfileUsername.setText(currentUsername)
+
+        // אם יש תמונת פרופיל ברירת מחדל, היא כבר מוגדרת ב-XML
+    }
+
+    private fun setupListeners() {
+        // כפתור שינוי תמונת פרופיל
+        binding.changeProfileButton.setOnClickListener {
+            openGallery()
+        }
+
+        // כפתור התנתקות
+        binding.buttonLogout.setOnClickListener {
+            logout()
+        }
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        getContent.launch(intent)
+    }
+
+    private fun saveUserData() {
+        val username = binding.editProfileUsername.text.toString().trim()
+
+        if (username.isEmpty()) {
+            showError("Username cannot be empty")
+            return
+        }
+
+        // הצגת הודעת הצלחה
+        showSuccess("Profile updated successfully")
+
+        // שמירת המידע המעודכן (כרגע רק בזיכרון)
+        currentUsername = username
+
+        // בהמשך כאן תתווסף השמירה ל-Firebase
+    }
+
+    private fun logout() {
+        // כרגע רק עוברים למסך התחברות, בהמשך נוסיף התנתקות מ-Firebase
+        navigateToLogin()
+    }
+
+    private fun navigateToLogin() {
+        findNavController().navigate(R.id.fragment_login)
+    }
+
+    private fun showError(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+    }
+
+    private fun showSuccess(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // שמירת השינויים אם המשתמש יוצא מהמסך
+        saveUserData()
+        _binding = null
     }
 }
